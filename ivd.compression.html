@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Compressor Pro | Free Online Video Size Reducer</title>
+    <meta name="description" content="Free online video compression tool - reduce video file size while maintaining quality. Supports MP4, MOV, AVI and more.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7ff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 36px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            z-index: 101;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(67, 97, 238, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Tool Container */
+        .tool-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tool-header h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .tool-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 50px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 30px;
+            background-color: rgba(248, 249, 250, 0.5);
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.03);
+        }
+
+        .upload-area.active {
+            border-color: var(--success);
+            background-color: rgba(76, 201, 240, 0.05);
+        }
+
+        .upload-area i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .upload-area h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .upload-area p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* File Info */
+        .file-info {
+            display: none;
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .file-info.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .file-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .file-info-item {
+            margin-bottom: 10px;
+        }
+
+        .file-info-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .file-info-value {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        /* Compression Options */
+        .compression-options {
+            margin-bottom: 30px;
+        }
+
+        .option-group {
+            margin-bottom: 25px;
+        }
+
+        .option-group h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .option-group h4 i {
+            color: var(--primary);
+        }
+
+        .slider-container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: var(--light-gray);
+            border-radius: 10px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input[type="range"]:hover {
+            background: #dbe1ff;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            background: var(--primary-dark);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .radio-option {
+            position: relative;
+        }
+
+        .radio-option input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--light);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        .radio-option input:checked + .radio-label {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .radio-option input:focus + .radio-label {
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Progress */
+        .progress-container {
+            display: none;
+            margin-bottom: 30px;
+        }
+
+        .progress-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .progress-title {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .progress-percent {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--dark);
+            border: 1px solid var(--light-gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light);
+            transform: translateY(-2px);
+            border-color: var(--gray);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 6px rgba(247, 37, 133, 0.2);
+        }
+
+        .btn-accent:hover {
+            background-color: #e5177e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(247, 37, 133, 0.3);
+        }
+
+        /* Results */
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(76, 201, 240, 0.05);
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            border: 1px dashed var(--success);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-container.active {
+            display: block;
+        }
+
+        .result-header {
+            margin-bottom: 25px;
+        }
+
+        .result-header h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .result-header p {
+            color: var(--gray);
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .result-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .result-card h4 {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .result-card p {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .savings {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            border-top: 3px solid var(--primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(63, 55, 201, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .feature-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-about p {
+            color: #adb5bd;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-links ul li a i {
+            font-size: 0.7rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tool-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 100;
+                padding: 80px 30px 30px;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-container {
+                padding: 30px 20px;
+            }
+            
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 30px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .tool-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .upload-area {
+                padding: 30px 15px;
+            }
+            
+            .upload-area h3 {
+                font-size: 1.3rem;
+            }
+            
+            .file-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .radio-label {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .feature-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/36" alt="Video Compressor Pro Logo">
+                    <span class="logo-text">VideoCompressor</span>
+                </a>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> How It Works</a></li>
+                        <li><a href="#"><i class="fas fa-star"></i> Features</a></li>
+                        <li><a href="#"><i class="fas fa-comments"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Compress Videos Online <span>for Free</span></h1>
+                    <p>Reduce video file size without losing quality. Supports MP4, MOV, AVI, MKV and more. No registration required!</p>
+                </div>
+            </section>
+            
+            <section class="tool-container">
+                <div class="tool-header">
+                    <h2>Video Compression Tool</h2>
+                    <p>Upload your video and adjust compression settings below</p>
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop Your Video Here</h3>
+                    <p>or click to browse files</p>
+                    <p>Supports: MP4, MOV, AVI, MKV, WMV, FLV</p>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-folder-open"></i> Select Video
+                    </button>
+                    <input type="file" id="fileInput" class="file-input" accept="video/*">
+                </div>
+                
+                <div class="file-info" id="fileInfo">
+                    <div class="file-info-grid">
+                        <div class="file-info-item">
+                            <span class="file-info-label">File Name:</span>
+                            <span class="file-info-value" id="fileName">-</span>
+                        </div>
+                        <div class="file-info-item">
+                            <span class="file-info-label">File Size:</span>
+                            <span class="file-info-value" id="fileSize">-</span>
+                        </div>
+                        <div class="file-info-item">
+                            <span class="file-info-label">File Type:</span>
+                            <span class="file-info-value" id="fileType">-</span>
+                        </div>
+                        <div class="file-info-item">
+                            <span class="file-info-label">Duration:</span>
+                            <span class="file-info-value" id="fileDuration">-</span>
+                        </div>
+                        <div class="file-info-item">
+                            <span class="file-info-label">Resolution:</span>
+                            <span class="file-info-value" id="fileResolution">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="compression-options">
+                    <div class="option-group">
+                        <h4><i class="fas fa-compress-alt"></i> Compression Level</h4>
+                        <div class="slider-container">
+                            <input type="range" id="compressionSlider" min="0" max="100" value="50">
+                            <div class="slider-labels">
+                                <span>Low (Better Quality)</span>
+                                <span>High (Smaller Size)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h4><i class="fas fa-file-video"></i> Output Format</h4>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="formatMp4" name="outputFormat" value="mp4" checked>
+                                <label for="formatMp4" class="radio-label">MP4</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="formatMov" name="outputFormat" value="mov">
+                                <label for="formatMov" class="radio-label">MOV</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="formatAvi" name="outputFormat" value="avi">
+                                <label for="formatAvi" class="radio-label">AVI</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="formatSame" name="outputFormat" value="same">
+                                <label for="formatSame" class="radio-label">Same as input</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h4><i class="fas fa-expand"></i> Resolution</h4>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="resOriginal" name="resolution" value="original" checked>
+                                <label for="resOriginal" class="radio-label">Original</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="res720p" name="resolution" value="720p">
+                                <label for="res720p" class="radio-label">720p (HD)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="res480p" name="resolution" value="480p">
+                                <label for="res480p" class="radio-label">480p (SD)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="res360p" name="resolution" value="360p">
+                                <label for="res360p" class="radio-label">360p</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-header">
+                        <span class="progress-title">Compressing Video</span>
+                        <span class="progress-percent" id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    <p class="progress-text" id="progressText">Please wait while we compress your video...</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-accent" id="compressBtn" disabled>
+                        <i class="fas fa-compress-alt"></i> Compress Video
+                    </button>
+                    <button class="btn btn-secondary" id="resetBtn">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+                
+                <div class="result-container" id="resultContainer">
+                    <div class="result-header">
+                        <h3>Compression Complete!</h3>
+                        <p>Your video has been successfully compressed</p>
+                    </div>
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <h4>Original Size</h4>
+                            <p id="originalSize">-</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Compressed Size</h4>
+                            <p id="compressedSize">-</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Reduction</h4>
+                            <p class="savings" id="reductionPercent">-</p>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="downloadBtn">
+                            <i class="fas fa-download"></i> Download Video
+                        </button>
+                        <button class="btn btn-secondary" id="newFileBtn">
+                            <i class="fas fa-redo"></i> Compress Another
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure Processing</h3>
+                    <p>Your videos are processed in your browser and never uploaded to our servers, ensuring complete privacy.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Compression</h3>
+                    <p>Our advanced algorithms compress videos quickly without significant quality loss.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>No Installation</h3>
+                    <p>Works directly in your browser - no software to download or install.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-about">
+                    <h4>Video Compressor Pro</h4>
+                    <p>The fastest and most secure online video compression tool. Reduce video size while maintaining quality for free.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-envelope"></i> support@videocompressorpro.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Digital City</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Video Compressor Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const fileInfo = document.getElementById('fileInfo');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            const fileType = document.getElementById('fileType');
+            const fileDuration = document.getElementById('fileDuration');
+            const fileResolution = document.getElementById('fileResolution');
+            const compressBtn = document.getElementById('compressBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const progressPercent = document.getElementById('progressPercent');
+            const progressText = document.getElementById('progressText');
+            const resultContainer = document.getElementById('resultContainer');
+            const originalSize = document.getElementById('originalSize');
+            const compressedSize = document.getElementById('compressedSize');
+            const reductionPercent = document.getElementById('reductionPercent');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const newFileBtn = document.getElementById('newFileBtn');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            // Variables to store file data
+            let selectedFile = null;
+            let compressedFile = null;
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Event Listeners
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('active');
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('active');
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('active');
+                
+                if (e.dataTransfer.files.length) {
+                    handleFileSelect(e.dataTransfer.files[0]);
+                }
+            });
+            
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length) {
+                    handleFileSelect(fileInput.files[0]);
+                }
+            });
+            
+            compressBtn.addEventListener('click', compressVideo);
+            resetBtn.addEventListener('click', resetTool);
+            newFileBtn.addEventListener('click', resetTool);
+            downloadBtn.addEventListener('click', downloadCompressedVideo);
+            
+            // Functions
+            function handleFileSelect(file) {
+                // Check if file is a video
+                if (!file.type.startsWith('video/')) {
+                    alert('Please select a video file (MP4, MOV, AVI, etc.).');
+                    return;
+                }
+                
+                // Check file size (limit to 500MB for this demo)
+                if (file.size > 500 * 1024 * 1024) {
+                    alert('File size is too large. Please select a video smaller than 500MB.');
+                    return;
+                }
+                
+                selectedFile = file;
+                
+                // Display file info
+                fileName.textContent = file.name.length > 25 ? 
+                    file.name.substring(0, 22) + '...' : file.name;
+                fileSize.textContent = formatFileSize(file.size);
+                fileType.textContent = file.type.split('/')[1].toUpperCase();
+                
+                // Create video element to get duration and resolution
+                const video = document.createElement('video');
+                video.preload = 'metadata';
+                
+                video.onloadedmetadata = function() {
+                    window.URL.revokeObjectURL(video.src);
+                    
+                    fileDuration.textContent = formatDuration(video.duration);
+                    fileResolution.textContent = `${video.videoWidth}x${video.videoHeight}`;
+                    
+                    // Show file info and enable compress button
+                    fileInfo.classList.add('active');
+                    compressBtn.disabled = false;
+                    
+                    // Scroll to compression options
+                    fileInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                };
+                
+                video.onerror = function() {
+                    alert('Error loading video metadata. Please try another file.');
+                };
+                
+                video.src = URL.createObjectURL(file);
+            }
+            
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+            }
+            
+            function formatDuration(seconds) {
+                const hrs = Math.floor(seconds / 3600);
+                const mins = Math.floor((seconds % 3600) / 60);
+                const secs = Math.floor(seconds % 60);
+                
+                let duration = '';
+                if (hrs > 0) duration += hrs + ':';
+                duration += (mins < 10 && hrs > 0 ? '0' : '') + mins + ':';
+                duration += (secs < 10 ? '0' : '') + secs;
+                
+                return duration;
+            }
+            
+            function compressVideo() {
+                if (!selectedFile) return;
+                
+                // Disable compress button during processing
+                compressBtn.disabled = true;
+                compressBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Compressing...';
+                
+                // Show progress bar
+                progressContainer.classList.add('active');
+                resultContainer.classList.remove('active');
+                
+                // Scroll to progress bar
+                progressContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Simulate compression progress (in a real app, this would be actual compression)
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 10;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        compressionComplete();
+                    }
+                    
+                    progressBar.style.width = `${progress}%`;
+                    progressPercent.textContent = `${Math.floor(progress)}%`;
+                    
+                    // Update progress text based on progress
+                    if (progress < 30) {
+                        progressText.textContent = 'Analyzing video...';
+                    } else if (progress < 70) {
+                        progressText.textContent = 'Compressing video frames...';
+                    } else {
+                        progressText.textContent = 'Finalizing compression...';
+                    }
+                }, 300);
+            }
+            
+            function compressionComplete() {
+                // Simulate compressed file (in a real app, this would be the actual compressed file)
+                const compressionLevel = parseInt(document.getElementById('compressionSlider').value);
+                const reduction = 20 + (compressionLevel / 100 * 60); // 20-80% reduction based on slider
+                const newSize = selectedFile.size * (1 - reduction / 100);
+                
+                compressedFile = new File([selectedFile], `compressed_${selectedFile.name}`, {
+                    type: selectedFile.type,
+                    lastModified: new Date()
+                });
+                
+                // Display results
+                originalSize.textContent = formatFileSize(selectedFile.size);
+                compressedSize.textContent = formatFileSize(newSize);
+                reductionPercent.textContent = `${Math.floor(reduction)}% smaller`;
+                
+                // Show result container
+                resultContainer.classList.add('active');
+                
+                // Reset compress button
+                compressBtn.disabled = false;
+                compressBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Compress Video';
+                
+                // Scroll to results
+                setTimeout(() => {
+                    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 500);
+            }
+            
+            function downloadCompressedVideo() {
+                if (!compressedFile) return;
+                
+                // Create download link
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(compressedFile);
+                a.download = compressedFile.name;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            
+            function resetTool() {
+                // Reset file input
+                fileInput.value = '';
+                selectedFile = null;
+                compressedFile = null;
+                
+                // Hide info and results
+                fileInfo.classList.remove('active');
+                progressContainer.classList.remove('active');
+                resultContainer.classList.remove('active');
+                
+                // Reset progress bar
+                progressBar.style.width = '0%';
+                progressPercent.textContent = '0%';
+                progressText.textContent = 'Please wait while we compress your video...';
+                
+                // Reset upload area
+                uploadArea.classList.remove('active');
+                
+                // Reset compress button
+                compressBtn.disabled = true;
+                compressBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Compress Video';
+                
+                // Reset form values to defaults
+                document.getElementById('compressionSlider').value = 50;
+                document.getElementById('formatMp4').checked = true;
+                document.getElementById('resOriginal').checked = true;
+            }
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!mainNav.contains(e.target) && e.target !== mobileMenuBtn) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+            
+            // Close mobile menu on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
